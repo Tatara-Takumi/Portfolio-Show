@@ -1,0 +1,52 @@
+.profile_root{
+  min-height: 100vh;
+}
+.profile_heroContent{
+    background-color: #fff;
+    padding:8,0,6
+}
+.profile_heroButton{
+    margin-top: 4px;
+}
+.profile_belowIcons{
+    background-color: #fff;
+    display: flex;
+}
+.profile_Dialog{
+    margin-top: 50px;
+}
+.profile_cardGrid{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    min-height: 500px;
+}
+.profile_card{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.profile_cardMedia{
+    padding-top: 56.25%;
+}
+.profile_Link{
+    cursor:pointer;
+    text-decoration-line:none;
+    color:black;
+    font-size:16px;
+}
+.profile_cardContent{
+    flex-grow: 1;
+}
+.profile_CardContent2{
+  text-align: center;
+}
+.profile_deleteAccount{
+  text-align: center;
+}
+.profile_deleteAccountButton{
+  background-color: red;
+}
+.profile_space20{
+  height: 20px;
+}
+  

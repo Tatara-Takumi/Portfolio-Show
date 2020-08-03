@@ -1,0 +1,50 @@
+.Album_root{
+    min-height: 100vh;
+}
+.Album_top{
+    height: 200px;
+    background-color: #fff;
+}
+.Album_topContent{
+    text-align: center;
+}
+.Album_h1{
+
+}
+.Album_space{
+    height: 20px;
+}
+.cardGrid{
+    margin-right: 2px;
+    
+}
+.card{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.Album_cardMedia{
+    height: 0;
+    padding-top: 65%;
+}
+.cardContent{
+    flex-grow: 1;
+}
+.Link{
+    text-decoration: none;
+    color: black;
+}
+.tags{
+    display: flex;
+}
+.Album_space{
+    height: 30px;
+}
+
+
+.Album_moreButton{
+    text-align: center;
+}
+.mgr-10{
+    margin-right: 10px;
+}
