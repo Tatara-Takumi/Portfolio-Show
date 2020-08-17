@@ -31,9 +31,9 @@ export default function Footer() {
             </Typography>
             <div className={classes.container}>
               <ul>
-                <li style={{display:'inline'}}>
+                {/* <li style={{display:'inline'}}>
               <Link className={classes.Link} to={'/about'}>Portfolio Showとは</Link>
-              </li>
+              </li> */}
               <li style={{display:'inline'}}>
               <Link className={classes.Link} to='/privacypolicy'>プライバシーポリシー</Link>
               </li>
@@ -41,7 +41,7 @@ export default function Footer() {
               <Link className={classes.Link} to="/terms">利用規約</Link>
               </li>
               <li style={{display:'inline'}}>
-              <Link className={classes.Link} to='/form'>ご意見</Link>
+              <Link className={classes.Link} to='/form'>お問い合わせ</Link>
               </li>
               </ul>
 

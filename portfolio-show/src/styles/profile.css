@@ -5,6 +5,12 @@
     background-color: #fff;
     padding:8,0,6
 }
+.profile_userContent{
+  max-height: 300px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+
+}
 .profile_heroButton{
     margin-top: 4px;
 }

@@ -29,7 +29,9 @@ const useStyles=makeStyles((theme) => ({
         marginRight:'2.5rem'
     },
     introduction:{
-       minHeight:'100px'
+       minHeight:'100px',
+       whiteSpace:'pre-wrap',
+       wordWrap:'break-word'
     },
     tags:{
         display:'flex',
@@ -55,6 +57,7 @@ function WrappedBody(props) {
     const [postRef,setPostRef] = React.useState("")
     const [date,setDate] = React.useState("")
     useEffect(() => {
+        window.scrollTo(0,0)
         const ref = firebase.firestore().collection('posts').doc(props.navigation.match.params.id)
         setPostRef(ref)
         const dataArray=[]
@@ -117,7 +120,11 @@ function WrappedBody(props) {
     
     return (
         <React.Fragment>
-            <Helmet title={props.Store.state.field.SiteName +' By ' + props.Store.state.field.UserName } description='Body' />
+            <Helmet 
+                title={props.Store.state.field.SiteName +' By ' + props.Store.state.field.UserName + '|Portfolio Show' } 
+                description={props.Store.state.field.description} 
+                image={props.Store.state.field.thumbnail}
+                />
         <CssBaseline />
         <Container className={classes.cardGrid} maxWidth="lg">
         <div style={{height:'1rem'}} />

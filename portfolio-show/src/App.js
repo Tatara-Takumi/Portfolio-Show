@@ -49,21 +49,20 @@ class WrappedApp extends Component {
         {this.props.Store.state.logInState ? 
           
           <Switch>
-          <Route exact path='/' component={Album} />
-          <Route exact path='/login' component={LogIn} />
-          <Route exact path="/body/:id" component={Body} />
-          <Route exact path='/edit/:id' component={Edit} />
-          <Route exact path='/submit' component={Submit} />
-          <Route exact path='/profile' component={Profile} />
-          <Route exact path='/oprofile/:id' component={oProfile} />
-          <Route exact path='/terms' component={Terms}/>
-          <Route exact path='/about' component={About} />
-          <Route exact path='/privacypolicy' component={PrivacyPolicy} />
-          <Route exact path='/form' component={Form} />      
+            <Route exact path='/' component={Album} />
+            <Route exact path='/login' component={LogIn} />
+            <Route exact path="/body/:id" component={Body} />
+            <Route exact path='/edit/:id' component={Edit} />
+            <Route exact path='/submit' component={Submit} />
+            <Route exact path='/profile' component={Profile} />
+            <Route exact path='/oprofile/:id' component={oProfile} />
+            <Route exact path='/terms' component={Terms}/>
+            <Route exact path='/about' component={About} />
+            <Route exact path='/privacypolicy' component={PrivacyPolicy} />
+            <Route exact path='/form' component={Form} />      
           </Switch>
           :
-          
-            <Switch>
+          <Switch>
             <Route exact path='/' component={Album} />
             <Route exact path='/login' component={LogIn} />
             <Route exact path='/createuser' component={CreateUserInfo} />
@@ -74,7 +73,7 @@ class WrappedApp extends Component {
             <Route exact path='/privacypolicy' component={PrivacyPolicy} />
             <Route exact path='/form' component={Form} />
             <Redirect to={'/login'} />
-            </Switch>
+          </Switch>
       }
           
         <Footer />

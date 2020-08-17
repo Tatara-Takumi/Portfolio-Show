@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Typography from '@material-ui/core/Typography'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container'
@@ -21,7 +21,9 @@ const useStyles= makeStyles((theme) => ({
 
 
 function WrappedPrivacyPolicy(props){
-    
+    useEffect(() => {
+        window.scrollTo(0,0)
+    })
     const classes = useStyles();
     return(
         <React.Fragment>  

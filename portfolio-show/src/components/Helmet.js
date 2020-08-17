@@ -11,6 +11,16 @@ function Application(props) {
                     {props.title}
                 </title>
                 <meta name='description' content={props.description} />
+                <meta property='og:type' content='article' />
+                <meta property='og:title' content={props.title} />
+                {props.image ? 
+                    <meta property='og:image' content={props.image} />
+                    :
+                    null
+                }
+                <meta property='og:description' content={props.description} />
+                <meta property='og:site_name' content="Portfolio Show" />
+                <meta property='og:url' content="https://portfolio-show-aec9c.web.app/" />
                 
             </Helmet>
         </div>

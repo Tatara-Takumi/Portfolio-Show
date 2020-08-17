@@ -11,6 +11,7 @@ const useStyles= makeStyles((theme) => ({
     },
     root:{
         textAlign:'center',
+        height:"1102px"
     }
 }))
 
@@ -24,7 +25,7 @@ function Form(props){
             <Helmet title={'お問い合わせ |Portfolio Show'} desctription='Portfolio Showは誰でも気軽に投稿できるポートフォリオ投稿サイトです。個人やチームのポートフォリオとしても活用できます！' />
         <CssBaseline />
         <Container className={classes.root} maxWidth='md'>
-        <iframe title='Googleアンケート' scrolling='no' src="https://docs.google.com/forms/d/e/1FAIpQLSd2CjvtdJKXsIkYVnbgL_sqhSAI9gRcyCG_y3ia_DHttVNz2g/viewform?embedded=true" width="640" height="1059" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+        <iframe title='Googleアンケート' scrolling='no' src="https://docs.google.com/forms/d/e/1FAIpQLSd2CjvtdJKXsIkYVnbgL_sqhSAI9gRcyCG_y3ia_DHttVNz2g/viewform?embedded=true" width="640" height="1099" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
         </Container>
         
         </React.Fragment>

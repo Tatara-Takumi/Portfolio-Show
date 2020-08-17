@@ -37,8 +37,10 @@ function WrappedSubmit (props) {
   const [load,setLoad] = useState(false)
   
   useEffect(() => {
+    window.scrollTo(0,0)
     var temp = []
     if(props.Store.state.UserInfo['0'] == null){
+      
       firebase.auth().onAuthStateChanged(async user => {
         if(user){
           firebase.firestore().collection('users').doc(user.uid).get()
@@ -100,6 +102,7 @@ function WrappedSubmit (props) {
     props.navigation.history.push('/profile')
   }
   return (
+    <div>
     <Container maxWidth='md'>
       <Helmet title={'Portfolio Show'} desctription='Portfolio Showは誰でも気軽に投稿できるポートフォリオ投稿サイトです。個人やチームのポートフォリオとしても活用できます！' />  
 
@@ -199,6 +202,7 @@ function WrappedSubmit (props) {
   
   
   </Container>
+  </div>
    
   );
 }

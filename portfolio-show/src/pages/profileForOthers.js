@@ -53,6 +53,7 @@ function WrappedProfileForOthers(props) {
   const [posts,setPosts] = useState([])
 
   useEffect(() => {
+    window.scrollTo(0,0)
     let usertemp=[]
     let poststemp=[]
     async function fetchUser(){

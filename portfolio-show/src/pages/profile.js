@@ -47,22 +47,21 @@ class WrappedProfile extends Component {
   
   
   async componentDidMount(){
-    // this.setState({loading:true})
     let temp = []
     let usertemp = []
     let favoritestemp=[]
     
       firebase.auth().onAuthStateChanged(async user => {
+        window.scrollTo(0,0)
         if(user){
           let userid = user.uid
           const ref = firebase.firestore().collection('users').doc(userid)
           this.props.Store.uidSet(userid)
-          // await fetchUser(userid)
           await firebase.firestore().collection('users').doc(userid).get()
             .then(function(doc){
               usertemp.push({...doc.data(),key:doc.id})
             })
-          await this.setState({user:usertemp['0']})
+          this.setState({user:usertemp['0']})
           this.props.Store.UserInfoSet(usertemp['0'])
 
           await ref.collection('favorites').get()
@@ -165,28 +164,33 @@ class WrappedProfile extends Component {
     delete temp[index]
     this.setState({myPosts:temp})
     firebase.firestore().collection('posts').doc(key).delete()
-    //画像の消去
-    var photo = firebase.storage().ref()
-    var photoRef = photo.child(key+".png")
-    photoRef.delete().then(function(){
-    }).catch(function(e){
-      console.error(e)
-    })
+    //画像の消去はcloudFunctionで
   }
-  naviDelete = () => {
-    this.props.navigation.history.push('/delete')
-  }
-  deleteAccount = async()=>{
-    var user = firebase.auth().currentUser;
+
+  deleteUser = async()=>{
+    //userに関するドキュメントの消去
+    //userアカウントそのものの消去はCloudFunctionsで
+    var userRef = firebase.firestore().collection('users').doc(this.state.user.key)
+    var postRef = firebase.firestore().collection('posts').where('uid','==',this.state.user.key)
     
-    firebase.firestore().collection('users').doc(user.uid).delete()
-      .then(function(){
-      }).catch(function(error){
-        alert(error)
+    var batch = firebase.firestore().batch()
+    
+    batch.delete(userRef)
+    await postRef.get().then(function(qs){
+      qs.forEach(async function(doc){
+        batch.delete(doc.ref)  
       })
-    user.delete().then(function(){
-    }).catch(function(error){
-      console.error(error)
+      return batch.commit()
+    })
+    .catch(function(err){
+      console.log(err)
+      alert('処理に失敗しました。もう一度やり直してください。')
+    })
+
+    firebase.auth().signOut().then(async function(){
+      await this.props.logInStateSet(false)
+    }).catch(function(err){
+      console.log(err)
     })
     
   }
@@ -210,11 +214,9 @@ class WrappedProfile extends Component {
         
         <div className={"profile_heroContent"}>
         
-                <div style={{maxHeight:'300px'}}>
-                  <div>
-                    <Cliploader loading={this.state.loading} />
-                  </div>
-                <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+                <div className={"profile_userContent"}>
+                  
+                <Typography component="h2" variant="h2" align="center" color="textPrimary" gutterBottom>
                   {this.state.user.UserName}
                 </Typography>
                 <Typography variant="h6" color="textSecondary" paragraph>
@@ -374,7 +376,7 @@ class WrappedProfile extends Component {
       {/* 編集ダイアログの終わり */}
 
         <Container className={"profile_cardGrid"} maxWidth="md">
-        <Typography component={'h1'} variant="h3">Portfolio</Typography>
+        <Typography component={'h2'} variant="h3">Portfolio</Typography>
         <div>
         <Cliploader loading={this.state.loading} />
         </div>
@@ -421,7 +423,7 @@ class WrappedProfile extends Component {
           
 
           <div style={{height:'50px'}} />
-          <Typography component={'h1'} variant="h3">Favorite</Typography>
+          <Typography component={'h2'} variant="h3">Favorite</Typography>
           {/* End hero unit */}
           {this.state.favorites.length>0 ?
           <Grid container spacing={4}>
@@ -484,7 +486,7 @@ class WrappedProfile extends Component {
           </DialogContentText>
         </DialogContent>
               <DialogActions>
-                <Button onClick={()=>this.deleteAccount()}>
+                <Button onClick={()=>this.deleteUser()}>
                   削除
                 </Button>
                 <Button onClick={()=>this.setState({open2:false})}>

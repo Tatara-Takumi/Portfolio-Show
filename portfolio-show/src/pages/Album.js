@@ -33,6 +33,7 @@ class WrappedAlbum extends Component {
   }
 
   async componentDidMount() {
+    window.scrollTo(0,0)
     let temp = []
     await firebase.firestore().collection('posts').orderBy('createdAt','desc').limit(this.state.tempLength).get()
     .then(function (qs) {
@@ -93,13 +94,13 @@ class WrappedAlbum extends Component {
   
   return (
     <React.Fragment>
-      <Helmet title={'Portfolio Show'} desctription='Portfolio Showは誰でも気軽に投稿できるポートフォリオ投稿サイトです。個人やチームのポートフォリオとしても活用できます！' />
+      <Helmet title={'Portfolio Show'} description='Portfolio Showは誰でも気軽に投稿できるポートフォリオ投稿サイトです。個人やチームのポートフォリオとしても活用できます！' />
       <div className={'Album_root'}>
         <Container className={"Album_top"} maxWidth='md'>
           <div className={'Album_topContent'}>
-            <h1 className={"Album_h1"}>Webプログラマーのポートフォリオ</h1>
+            <h1 className={"Album_h1"}>Portfolio Show</h1>
             <p>Portfolio Showは誰でも気軽に投稿できるポートフォリオ投稿サイトです。</p>
-            <p>個人やチームのポートフォリオとしても活用できます！</p>
+            <p>ぜひ個人やチームのポートフォリオとして活用してください！</p>
           </div>
         </Container>
         <div className={"Album_space"} />
@@ -114,7 +115,6 @@ class WrappedAlbum extends Component {
               <Grid item key={index} xs={12} sm={6} md={4}>
                 <CardActionArea onClick={()=>this.naviBody(card)} style={{height:'100%'}}>
                 <Card className={"card"}>
-                  
                     <CardMedia
                       className={"Album_cardMedia"}
                       image={card.thumbnail}

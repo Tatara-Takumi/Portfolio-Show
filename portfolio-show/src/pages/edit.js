@@ -54,6 +54,7 @@ function WrappedEdit(props) {
     const [submitImage,setSubmitImage] = useState(null)
     useEffect(() => {
         var temp=[]
+        window.scrollTo(0,0)
         if(props.Store.state.field.length !== 0){
             var preDate = props.Store.state.field.updatedAt.toDate()
             setDate(preDate.getFullYear()+"/"+(preDate.getMonth()+1)+"/"+preDate.getDate())
@@ -113,7 +114,7 @@ function WrappedEdit(props) {
         
     return (
         <React.Fragment>
-            <Helmet title={'Portfolio Show'} desctription='Portfolio Showは誰でも気軽に投稿できるポートフォリオ投稿サイトです。個人やチームのポートフォリオとしても活用できます！' />  
+            <Helmet title={'投稿の編集|Portfolio Show'} desctription='Portfolio Showは誰でも気軽に投稿できるポートフォリオ投稿サイトです。個人やチームのポートフォリオとしても活用できます！' />  
         <CssBaseline />
         <Container className={classes.cardGrid} maxWidth="lg">
         <div style={{height:'1rem'}} />

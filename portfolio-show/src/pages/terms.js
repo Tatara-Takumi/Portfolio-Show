@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Typography from '@material-ui/core/Typography'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container'
@@ -20,11 +20,14 @@ const useStyles= makeStyles((theme) => ({
 
 
 function WrappedTerms(props){
+    useEffect (() => {
+        window.scrollTo(0,0)
+    })
     
     const classes = useStyles();
     return(
         <React.Fragment>  
-            <Helmet title={'利用規約 | Portfolio Show'} desctription='Portfolio Showは誰でも気軽に投稿できるポートフォリオ投稿サイトです。個人やチームのポートフォリオとしても活用できます！' />  
+            <Helmet title={'利用規約|Portfolio Show'} desctription='Portfolio Showは誰でも気軽に投稿できるポートフォリオ投稿サイトです。個人やチームのポートフォリオとしても活用できます！' />  
   
         <CssBaseline />
         <Container maxWidth='md'>

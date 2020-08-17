@@ -44,7 +44,7 @@ function WrappedLogIn (props) {
 
   
   useEffect(() => {
-
+    window.scrollTo(0,0)
     const naviCreateUserInfo = async(authResult) => {
       var userRef = firebase.firestore().collection('users').doc(authResult.user.uid)
       await userRef.get()
@@ -92,7 +92,7 @@ function WrappedLogIn (props) {
 
   return (
     <React.Fragment>
-        <Helmet title={'ログイン |Portfolio Show'} desctription='Portfolio Showは誰でも気軽に投稿できるポートフォリオ投稿サイトです。個人やチームのポートフォリオとしても活用できます！' />
+        <Helmet title={'ログイン|Portfolio Show'} desctription='Portfolio Showは誰でも気軽に投稿できるポートフォリオ投稿サイトです。個人やチームのポートフォリオとしても活用できます！' />
       <CssBaseline />
       <Container id='before' maxWidth='sm' className={classes.root}>
       <div className={classes.space1} />
